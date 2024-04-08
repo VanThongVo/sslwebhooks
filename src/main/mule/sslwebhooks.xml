@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<flow name="sslwebhooksFlow" doc:id="7bf33265-d286-41ab-985e-ff4a30d235dc" >
+		<http:listener doc:name="Listener" doc:id="ba0bd4a8-30c8-455b-8d86-57da4b9964a3" path="/orders" config-ref="HTTP_Listener_config"/>
+		<http:request method="POST" doc:name="Request" doc:id="d7920db4-889d-4cc4-96e9-8c96db64d209" path="/graphql.json" config-ref="HTTP_Request_configuration"/>
+		<logger level="INFO" doc:name="Logger" doc:id="79894485-e6a5-46d7-951a-9460e3b40e33" />
+		<set-payload value="#[payload]" doc:name="Set Payload" doc:id="74fadfb9-a1b5-446d-89da-a498500bc8e7" />
+	</flow>
+</mule>
